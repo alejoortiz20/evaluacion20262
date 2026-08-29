@@ -1,31 +1,360 @@
-html {
-  font-size: 14px;
-}
+:root {
+  --tgh-ink: #16232d;
+  --tgh-muted: #5e707c;
+  --tgh-steel: #eef2f5;
+  --tgh-paper: #ffffff;
+  --tgh-gas-950: #0b1d29;
+  --tgh-gas-800: #103043;
+  --tgh-gas: #0f6da7;
+  --tgh-gas-600: #0a5687;
+  --tgh-gas-100: #dff0fa;
+  --tgh-flame: #ee7c2f;
+  --tgh-flame-600: #cf5f12;
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  --bs-primary: var(--tgh-gas);
+  --bs-primary-rgb: 15, 109, 167;
+  --bs-body-color: var(--tgh-ink);
+  --bs-body-bg: #f5f8fa;
+  --bs-btn-primary-bg: var(--tgh-gas);
+  --bs-btn-primary-border-color: var(--tgh-gas);
+  --bs-btn-primary-hover-bg: var(--tgh-gas-600);
+  --bs-btn-primary-hover-border-color: var(--tgh-gas-600);
+  --bs-font-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --tgh-font-display: "Sora", "Inter", system-ui, sans-serif;
 }
 
 html {
   position: relative;
   min-height: 100%;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  html { font-size: 16px; }
 }
 
 body {
-  margin-bottom: 60px;
+  margin-bottom: 0;
+  font-family: var(--bs-font-sans-serif);
+  color: var(--tgh-ink);
+  background: var(--bs-body-bg);
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
+  font-family: var(--tgh-font-display);
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+/* ---------- Barra de navegación ---------- */
+.tgh-navbar {
+  background: linear-gradient(180deg, var(--tgh-gas-800) 0%, var(--tgh-gas-950) 100%);
+  box-shadow: 0 2px 14px rgba(11, 29, 41, 0.25);
+}
+
+.tgh-navbar .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.tgh-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.tgh-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #fff !important;
+  font-family: var(--tgh-font-display);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.tgh-brand-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  background: linear-gradient(135deg, var(--tgh-gas) 10%, var(--tgh-flame) 120%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 3px 8px rgba(0, 0, 0, 0.35);
+}
+
+.tgh-brand-sub {
+  display: block;
+  font-family: var(--bs-font-sans-serif);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9fc3da;
+  line-height: 1;
+}
+
+.tgh-navbar .nav-link {
+  color: #cfe0ec;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.9rem;
+}
+
+.tgh-navbar .nav-link:hover,
+.tgh-navbar .nav-link:focus {
+  color: #fff;
+}
+
+.tgh-navbar .nav-link.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tgh-navbar .nav-link.active::after {
+  content: "";
+  display: block;
+  height: 2px;
+  border-radius: 2px;
+  margin-top: 2px;
+  background: var(--tgh-flame);
+}
+
+/* ---------- Banda de encabezado de página ---------- */
+.tgh-band {
+  background:
+    radial-gradient(720px 200px at 12% -30%, rgba(238, 124, 47, 0.16), transparent 60%),
+    radial-gradient(760px 240px at 95% -40%, rgba(15, 109, 167, 0.35), transparent 65%),
+    linear-gradient(180deg, #0f2c3d 0%, var(--tgh-gas-950) 100%);
+  color: #fff;
+  border-radius: 1rem;
+  padding: 2.25rem 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.tgh-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8fb9d4;
+}
+
+.tgh-eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--tgh-flame);
+}
+
+.tgh-title {
+  font-weight: 700;
+  margin: 0.5rem 0 0.35rem;
+  letter-spacing: -0.01em;
+}
+
+.tgh-lead {
+  color: #b9cdda;
+  margin: 0;
+  max-width: 46rem;
+  font-size: 1.02rem;
+}
+
+/* ---------- Botones ---------- */
+.btn-flame {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--tgh-flame);
+  --bs-btn-border-color: var(--tgh-flame);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #e06a1a;
+  --bs-btn-hover-border-color: #e06a1a;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--tgh-flame-600);
+  --bs-btn-active-border-color: var(--tgh-flame-600);
+  --bs-btn-focus-shadow-rgb: 238, 124, 47;
+  font-weight: 600;
+}
+
+.btn-ghost-light {
+  --bs-btn-color: #d9e6ef;
+  --bs-btn-border-color: rgba(255, 255, 255, 0.35);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: rgba(255, 255, 255, 0.08);
+  --bs-btn-hover-border-color: rgba(255, 255, 255, 0.6);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: rgba(255, 255, 255, 0.14);
+  --bs-btn-active-border-color: #fff;
+}
+
+/* ---------- Tarjetas de estadísticas ---------- */
+.tgh-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem;
+}
+
+.tgh-stat {
+  background: var(--tgh-paper);
+  border: 1px solid #e3eaf0;
+  border-radius: 0.9rem;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.tgh-stat-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 0.75rem;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  color: #fff;
+}
+
+.tgh-stat-icon.is-gas { background: linear-gradient(135deg, var(--tgh-gas), var(--tgh-gas-600)); }
+.tgh-stat-icon.is-flame { background: linear-gradient(135deg, var(--tgh-flame), var(--tgh-flame-600)); }
+.tgh-stat-icon.is-success { background: linear-gradient(135deg, #21a057, #147a3f); }
+
+.tgh-stat-value {
+  font-family: var(--tgh-font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.tgh-stat-label {
+  color: var(--tgh-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+/* ---------- Tarjeta / tabla ---------- */
+.tgh-card {
+  background: var(--tgh-paper);
+  border: 1px solid #e3eaf0;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(22, 35, 45, 0.05);
+}
+
+.tgh-table thead th {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tgh-muted);
+  border-bottom-width: 1px;
+}
+
+.tgh-table tbody td {
+  vertical-align: middle;
+}
+
+.tgh-id {
+  display: inline-grid;
+  place-items: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 8px;
+  border-radius: 9px;
+  background: var(--tgh-gas-100);
+  color: var(--tgh-gas-600);
+  font-family: var(--tgh-font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.tgh-cliente {
+  font-weight: 600;
+}
+
+.tgh-badge-brand {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Formulario ---------- */
+.tgh-form-control {
+  border-color: #d4dee6;
+  border-radius: 0.6rem;
+  padding: 0.65rem 0.85rem;
+  background: #fbfdfe;
+}
+
+.tgh-form-control:focus {
+  border-color: var(--tgh-gas);
+  box-shadow: 0 0 0 0.2rem rgba(15, 109, 167, 0.16);
+}
+
+.tgh-aside {
+  background: linear-gradient(180deg, #103043 0%, var(--tgh-gas-950) 100%);
+  color: #d9e6ef;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  height: 100%;
+}
+
+.tgh-aside h3 {
+  color: #fff;
+  font-size: 1.05rem;
+}
+
+.tgh-service {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tgh-service:last-child { border-bottom: 0; padding-bottom: 0; }
+
+.tgh-service-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-top: 0.35rem;
+  flex: 0 0 auto;
+}
+
+.tgh-service strong {
+  color: #fff;
+  display: block;
+  font-size: 0.92rem;
+}
+
+.tgh-service p {
+  margin: 0;
+  font-size: 0.84rem;
+  color: #9fb9ca;
+}
+
+/* ---------- Estado vacío ---------- */
+.tgh-empty {
+  border: 1.5px dashed #c8d5df;
+  border-radius: 1rem;
+  background: #fbfdfe;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--tgh-muted);
+}
+
+/* ---------- Pie de página ---------- */
+.tgh-footer {
+  background: var(--tgh-gas-950);
+  color: #8fa7b8;
+  margin-top: 3.5rem;
+}
+
+/* ---------- Foco / accesibilidad ---------- */
+.btn:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible,
+.nav-link:focus-visible {
+  outline: 2px solid var(--tgh-gas);
+  outline-offset: 2px;
 }

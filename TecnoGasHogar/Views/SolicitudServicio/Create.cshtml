@@ -4,53 +4,106 @@
     ViewData["Title"] = "Registrar Solicitud";
 }
 
-<h1 class="mb-4">Registrar Solicitud de Servicio</h1>
+<section class="tgh-band mb-4">
+    <div>
+        <span class="tgh-eyebrow">Nueva solicitud</span>
+        <h1 class="tgh-title">Registrar solicitud de servicio</h1>
+        <p class="tgh-lead">Completa los datos del cliente y del servicio que se requiere para que nuestro técnico te contacte.</p>
+    </div>
+</section>
 
-<hr />
+<div class="row g-4">
+    <div class="col-lg-7">
+        <div class="tgh-card p-4">
+            <h4 class="mb-1">Datos del servicio</h4>
+            <p class="text-muted mb-4">Los campos marcados con * son obligatorios.</p>
 
-<div class="row">
-    <div class="col-md-6">
-        <form asp-action="Create" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form asp-action="Create" method="post" class="row g-3">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="mb-3">
-                <label asp-for="Cliente" class="form-label"></label>
-                <input asp-for="Cliente" class="form-control" />
-                <span asp-validation-for="Cliente" class="text-danger"></span>
+                <div class="col-md-6">
+                    <label asp-for="Cliente" class="form-label fw-semibold"></label>
+                    <input asp-for="Cliente" class="form-control tgh-form-control" placeholder="Ej. María Fernández" />
+                    <span asp-validation-for="Cliente" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Telefono" class="form-label fw-semibold"></label>
+                    <input asp-for="Telefono" class="form-control tgh-form-control" placeholder="Ej. 987 654 321" />
+                    <span asp-validation-for="Telefono" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Distrito" class="form-label fw-semibold"></label>
+                    <input asp-for="Distrito" class="form-control tgh-form-control" placeholder="Ej. San Isidro" />
+                    <span asp-validation-for="Distrito" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="TipoServicio" class="form-label fw-semibold"></label>
+                    <select asp-for="TipoServicio" class="form-select tgh-form-control">
+                        <option value="">-- Seleccione --</option>
+                        <option value="Instalación">Instalación</option>
+                        <option value="Mantenimiento">Mantenimiento</option>
+                        <option value="Revisión">Revisión</option>
+                        <option value="Fuga">Fuga</option>
+                    </select>
+                    <span asp-validation-for="TipoServicio" class="text-danger small"></span>
+                </div>
+
+                <div class="col-12">
+                    <label asp-for="Descripcion" class="form-label fw-semibold"></label>
+                    <textarea asp-for="Descripcion" class="form-control tgh-form-control" rows="4" placeholder="Describe el artefacto, la marca y el problema o trabajo requerido..."></textarea>
+                </div>
+
+                <div class="col-12 d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-flame px-4">Guardar solicitud</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="tgh-aside">
+            <h3>¿Qué servicios realizamos?</h3>
+            <p class="small mb-3">Elige el tipo de servicio que mejor describa lo que necesitas.</p>
+
+            <div class="tgh-service">
+                <span class="tgh-service-dot" style="background:#21a057"></span>
+                <div>
+                    <strong>Instalación</strong>
+                    <p>Instalación de cocinas, termas y calentadores a gas.</p>
+                </div>
+            </div>
+            <div class="tgh-service">
+                <span class="tgh-service-dot" style="background:#1580c4"></span>
+                <div>
+                    <strong>Mantenimiento</strong>
+                    <p>Limpieza y puesta a punto de artefactos de uso diario.</p>
+                </div>
+            </div>
+            <div class="tgh-service">
+                <span class="tgh-service-dot" style="background:#f0b429"></span>
+                <div>
+                    <strong>Revisión</strong>
+                    <p>Inspección técnica del estado del artefacto y sus conexiones.</p>
+                </div>
+            </div>
+            <div class="tgh-service">
+                <span class="tgh-service-dot" style="background:#e25454"></span>
+                <div>
+                    <strong>Fuga</strong>
+                    <p>Atención prioritaria ante detección de olor o fuga de gas.</p>
+                </div>
             </div>
 
-            <div class="mb-3">
-                <label asp-for="Telefono" class="form-label"></label>
-                <input asp-for="Telefono" class="form-control" />
-                <span asp-validation-for="Telefono" class="text-danger"></span>
+            <hr class="border-secondary my-3" />
+            <div class="small d-flex align-items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ee7c2f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+                <span>En caso de fuga de gas, evacua el ambiente y no enciendas ningún interruptor.</span>
             </div>
-
-            <div class="mb-3">
-                <label asp-for="Distrito" class="form-label"></label>
-                <input asp-for="Distrito" class="form-control" />
-                <span asp-validation-for="Distrito" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="TipoServicio" class="form-label"></label>
-                <select asp-for="TipoServicio" class="form-select">
-                    <option value="">-- Seleccione --</option>
-                    <option value="Instalación">Instalación</option>
-                    <option value="Mantenimiento">Mantenimiento</option>
-                    <option value="Revisión">Revisión</option>
-                    <option value="Fuga">Fuga</option>
-                </select>
-                <span asp-validation-for="TipoServicio" class="text-danger"></span>
-            </div>
-
-            <div class="mb-3">
-                <label asp-for="Descripcion" class="form-label"></label>
-                <textarea asp-for="Descripcion" class="form-control" rows="4"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Cancelar</a>
-        </form>
+        </div>
     </div>
 </div>
 
