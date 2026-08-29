@@ -11,7 +11,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 
+ENV ASPNETCORE_URLS=http://0.0.0.0:8080
 EXPOSE 8080
 
-# Render inyecta la variable PORT; se usa 8080 como valor por defecto.
-CMD dotnet TecnoGasHogar.dll --urls http://0.0.0.0:${PORT:-8080}
+CMD ["dotnet", "TecnoGasHogar.dll"]

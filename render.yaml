@@ -4,7 +4,7 @@ services:
     runtime: docker
     repo: https://github.com/alejoortiz20/evaluacion20262
     plan: free
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: Dockerfile
     region: oregon
     healthCheckPath: /SolicitudServicio/Index
     envVars:
@@ -12,3 +12,5 @@ services:
         value: Production
       - key: ASPNETCORE_URLS
         value: http://0.0.0.0:8080
+      - key: PORT
+        value: "8080"
