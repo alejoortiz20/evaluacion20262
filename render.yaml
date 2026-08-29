@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: tecnogashogar
+    runtime: docker
+    repo: https://github.com/alejoortiz20/evaluacion20262
+    plan: free
+    dockerfilePath: ./Dockerfile
+    region: oregon
+    healthCheckPath: /SolicitudServicio/Index
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://0.0.0.0:8080
