@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TecnoGasHogar.Data;
 using TecnoGasHogar.Models;
 
@@ -11,6 +12,15 @@ public class SolicitudServicioController : Controller
     public SolicitudServicioController(AppDbContext context)
     {
         _context = context;
+    }
+
+    public async Task<IActionResult> Index()
+    {
+        var solicitudes = await _context.SolicitudesServicio
+            .OrderByDescending(s => s.FechaRegistro)
+            .ToListAsync();
+
+        return View(solicitudes);
     }
 
     public IActionResult Create()
