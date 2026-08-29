@@ -1,0 +1,57 @@
+@model IEnumerable<SolicitudServicio>
+
+@{
+    ViewData["Title"] = "Listado de Solicitudes";
+}
+
+<h1 class="mb-4">Listado de Solicitudes de Servicio</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Registrar Nueva Solicitud</a>
+</p>
+
+@if (TempData["MensajeExito"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["MensajeExito"]
+    </div>
+}
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info" role="alert">
+        No hay solicitudes de servicio registradas.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead>
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(model => model.First().Id)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.First().Cliente)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.First().Telefono)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.First().Distrito)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.First().TipoServicio)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.First().Descripcion)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model.First().FechaRegistro)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var solicitud in Model)
+                {
+                    <tr>
+                        <td>@solicitud.Id</td>
+                        <td>@solicitud.Cliente</td>
+                        <td>@solicitud.Telefono</td>
+                        <td>@solicitud.Distrito</td>
+                        <td>@solicitud.TipoServicio</td>
+                        <td>@solicitud.Descripcion</td>
+                        <td>@solicitud.FechaRegistro.ToString("dd/MM/yyyy HH:mm")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
